@@ -1,0 +1,38 @@
+import React from 'react';
+import { Card, Avatar } from 'antd';
+import OktobIcon from './OktobIcon';
+
+class OktobCard extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+
+        }
+    }
+
+    render() {
+        let Meta = Card.Meta;
+
+        return <Card
+        style ={{ width: 320 }}
+        cover={
+            <img
+                alt={this.props.imgAlt}
+                src={this.props.imgURL}
+            />
+        }
+        actions={[
+            <OktobIcon type="like" count={this.props.likes} selected={this.props.liked}/>, 
+            <OktobIcon type="message" count={this.props.comments} />, 
+            <OktobIcon type="pushpin" selected={this.props.pinned}/>, 
+        ]}
+        >
+        <Meta
+            title={this.props.title}
+            description={this.props.description}
+        />
+    </Card>;  
+    }
+}
+export default OktobCard;
