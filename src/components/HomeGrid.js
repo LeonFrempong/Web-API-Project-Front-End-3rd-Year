@@ -1,37 +1,70 @@
 import React from 'react';
-import {Col, Row} from 'antd';
+import {Col, Row, Result} from 'antd';
 import OktobCard from './OktobCard';
 
 class HomeGrid extends React.Component {
    //this is a functional component to represent each row
-   oneRow(articles, rowNumber){
+   constructor(props){
+       super(props);
+
+       this.state = {
+           items : []
+       }
+
+       this.clickItem = this.clickItem.bind(this);
+   }
+
+   componentDidMount(){
+       fetch("http://localhost:3000/api/v1.0/articles")
+       .then(res => res.json())
+       .then(
+           (result) => {
+               console.log(result)
+            this.setState({
+                isLoaded : true,
+                items : result
+            });
+           },
+
+           (error) => {
+               this.setState({
+                   isLoaded : true,
+                   error
+               });
+           }
+       )
+   }
+   clickItem(id) {
+    console.log("article with id:" + id + " was clicked");
+   }
+
+     oneRow(articles, rowNumber){
     
      //first we need to go through each column in the grid
      //map each article to Col and inside of it our OktobCard component
      //this way we can compose our whole grid
-        let row = articles.map(element => {
+        let row = articles.map((element, index) => {
     
     //render the column, if it should have a card render a crad inside it, othewerwise do not render anything
-          return <>
-          <Col span={6}>
+          return <Col span={6} key={index}>
               {element !== null ? (
               <OktobCard key={element.id} title={element.title} description={element.description}
-                    likes={element.likes} comments={element.comments} selected={element.liked}
-        liked={element.liked} pinned={element.pinned}
-                    imgURL = {element.imgURL} />) : null}
+                likes={element.likes} comments={element.comments} selected={element.liked}
+                liked={element.liked} pinned={element.pinned}
+                imgURL = {element.imgURL} clicked={this.clickItem} />) : null}
             </Col>
-            </>
+            
     
            }
     
             );
     
     //after we go throw wach col inside the row compose the whole row
-            return <div key={rowNumber }>
+            return <div key={rowNumber}>
             <Row type="flex" justify="center">
                  {row}
             </Row>
-            <br />
+            <br/>
             </div>
     }
     render() {
@@ -75,9 +108,9 @@ class HomeGrid extends React.Component {
     
         
     } 
-    clickItem(id) {
-        console.log("article with id:" + id + " was clicked");
-    }
+    
+
+    
 }
 
 

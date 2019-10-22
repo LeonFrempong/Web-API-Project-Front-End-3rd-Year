@@ -9,6 +9,13 @@ class OktobCard extends React.Component {
         this.state = {
 
         }
+
+        this.handleClick.bind(this);
+
+    }
+
+    handleClick(){
+        this.props.clicked(this.props.id);
     }
 
     render() {
