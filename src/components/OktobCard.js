@@ -27,6 +27,7 @@ class OktobCard extends React.Component {
             <img
                 alt={this.props.imgAlt}
                 src={this.props.imgURL}
+                onClick={this.handleClick}
             />
         }
         actions={[

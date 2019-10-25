@@ -126,7 +126,7 @@ function App() {
       <div style={{ background: '#ECECEC', padding: '30px' }}>
         <Row type="flex" justify="center">
           <Col span={4}>
-            <Hello name="Mahmoud" />
+            <Hello name="Leon" />
           </Col>
           </Row>
           
