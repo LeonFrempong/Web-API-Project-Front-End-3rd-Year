@@ -10,7 +10,7 @@ class OktobCard extends React.Component {
 
         }
 
-        this.handleClick.bind(this);
+    this.handleClick.bind(this);
 
     }
 
@@ -22,8 +22,8 @@ class OktobCard extends React.Component {
         let Meta = Card.Meta;
 
         return <Card
-        style ={{ width: 320 }}
-        cover={
+            style ={{ width: 320 }}
+            cover={
             <img
                 alt={this.props.imgAlt}
                 src={this.props.imgURL}
