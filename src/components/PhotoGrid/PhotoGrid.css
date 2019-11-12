@@ -1,0 +1,23 @@
+.columns{
+    column-width: 280px;
+    column-gap: 15px;
+    margin: 5px;
+    padding: 20px;
+}
+
+.imgCard {
+    background: #fefefe;
+    border: 2px solid #fcfcfc;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    margin: 0 2px 15px;
+    padding: 15px;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.imgcard {
+    width: 100%;
+}
+@media sreen and (max-width: 750px){
+    .columns {column-gap: 0px}
+}

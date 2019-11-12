@@ -1,135 +1,91 @@
 import React from 'react';
-import logo from './logo.svg';
+import Login from './components/Login';
+import { BrowserRouter as Router, Link, Switch} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
 import './App.css';
-import { Row, Col } from 'antd'; 
-import Hello from './components/Hello';
-import HomeGrid from './components/HomeGrid';
+import { Component } from 'react';
 import Signup from './components/Signup';
+import { func } from 'prop-types';
 
-function App() {
-  let articles = [
-        {
-            "id": 1,
-            "title":"article 1",
-            "description": "some desription about the article",
-            "imgURL" : "https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-            "likes": 14,
-            "comments":4,
-            "pinned": false,
-            "liked": true
-        },
-        {
-            "id": 2,
-            "title":"article 2",
-            "description": "some desription about the article",
-            "imgURL" : "https://images.unsplash.com/photo-1498993337246-d6dc6b424efe?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80",
-            "likes": 5,
-            "comments":3,
-            "pinned": true,
-            "liked": false
-        },
-        {
-            "id": 3,
-            "title":"article 3", 
-    
-            "description": "some desription about the article",
-            "imgURL" : "https://images.unsplash.com/photo-1548092304-e0205cb0031b?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80",
-            "likes": 7,
-            "comments":2,
-            "pinned": false,
-            "liked": false
-        },
-        {
+const User = ({match}) => {
+  return (<h1> Welcome {match.params.username} </h1>)
+}
 
-          "id": 4,
-          "title":"article 4",
-          "description": "some desription about the article",
-          "imgURL" : "https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-          "likes": 14,
-          "comments":4,
-          "pinned": true,
-          "liked": true
-        },
-        {
-          "id": 5,
-          "title":"article 5",
-          "description": "some desription about the article",
-          "imgURL" : "https://images.unsplash.com/photo-1498993337246-d6dc6b424efe?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80",
-          "likes": 5,
-          "comments":3,
-          "pinned": false,
-          "liked": false
-        },
-        {
-          "id": 6,
-          "title":"article 6",
-          "description": "some desription about the article",
-          "imgURL" : "https://images.unsplash.com/photo-1548092304-e0205cb0031b?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80",
-          "likes": 7,
-          "comments":2,
-          "pinned": false,
-          "liked": false
-        },
-        {
-          "id": 7,
-          "title":"article 7",
-          "description": "some desription about the article",
-          "imgURL" : "https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-          "likes": 14,
-          "comments":4,
-          "pinned": false,
-          "liked": false
-        },
-        {
-          "id": 8,
-          "title":"article 8",
-          "description": "some desription about the article",
-          "imgURL" : "https://images.unsplash.com/photo-1498993337246-d6dc6b424efe?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80",
-          "likes": 6,
-          "comments":2, 
-
-          "pinned": true,
-          "liked": false
-        },
-        {
-          "id": 9,
-          "title":"article 9",
-          "description": "some desription about the article",
-          "imgURL" : "https://images.unsplash.com/photo-1548092304-e0205cb0031b?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80",
-          "likes": 7,
-          "comments":2,
-          "pinned": false,
-          "liked": false
-        },
-        {
-          "id": 10,
-          "title":"article 10",
-          "description": "some desription about the article",
-          "imgURL" : "https://images.unsplash.com/photo-1548092304-e0205cb0031b?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80",
-          "likes": 7,
-          "comments":2,
-          "pinned": false,
-          "liked": false
-        },
-        {
-          "id": 11,
-          "title":"article 11",
-          "description": "some desription about the article",
-          "imgURL" : "https://images.unsplash.com/photo-1548092304-e0205cb0031b?ixlib=rb1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80",
-          "likes": 5,
-          "comments":2,
-          "pinned": false,
-          "liked": true
-        }
-        ];
-      
+class App extends Component {
+  render() {
     return (
-        <div style = {{ background: '#ECECEC', padding: '30px' }}>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to={'/register'}>Register</Link>
+              </li>
+              <li>
+                <Link to="/articles">articles</Link>
+              </li>
+            </ul>
+          </nav>
+        
 
-          <Signup />
+        <Switch>
+          <Route path="/" exact strict render={
+            () => {
+              return ( <h1> Welcome</h1>);
+            }
+          }>
+              <Login />
+          </Route>
+        </Switch>
+        
+        <Switch>
+          <Route path="/register"> 
+            <Signup />
+          </Route>
+        </Switch>
+
+        {/* <Route path="/" exact strict render={
+          () => {
+            return ( <h1> Welcome to Nutrition site</h1>);
+          }
+          
+        }/>
+        
+        
+         <Route path="/signup" exact strict render={
+          () => {
+            return ( <h1> Create your account</h1>);
+            
+          }
+           
+        }/>
+        <div>
+        <Login />
+        
+        <Route path="/about" exact strict render={
+          () => {
+            return ( <h1> About</h1>);
+          }
+        }/>
+
+        <Route path="/user/:username" exact strict Component={User}/>
+        
+      </div></div>
+      </Router>
+       */}
+        
         </div>
-    );
-  } 
-
+      </Router>
+    )
+  }
+}
+const register = ({ match }) => (
+  <div>
+    <Signup />
+  </div>
+)
 
 export default App;
