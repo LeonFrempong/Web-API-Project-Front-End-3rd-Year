@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.23.4",
+    "antd": "^3.25.2",
+    "bootstrap": "^4.3.1",
     "node.js": "0.0.0",
     "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.15",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.2"
+    "react-scripts": "3.1.2",
+    "react-standalone-form": "^0.6.10",
+    "redux": "^4.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

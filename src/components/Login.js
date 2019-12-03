@@ -12,9 +12,27 @@ class NormalLoginForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+
+        fetch(':http://localhost:3000/api/v1.0/users',{
+          method: 'POST',
+          headers: {
+            'Accept': 'applicaton/json',
+            'Content-Type':'application/json',
+          },
+          body: JSON.stringify({values})
+        }).then(res =>{
+          if(res.ok)
+            this.setState({addedSuccessfully:true})
+          else
+            this.setState({
+              addedSuccessfully:false,
+              errorCode: res.status
+            });
+        }).then(data => this.checkResponse(data))
       }
     });
   };
+
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -55,11 +73,7 @@ class NormalLoginForm extends React.Component {
           <Button type= "primary" htmlType = "register" className="register">
             Register
           </Button>
-          {/* <Link to = "/Signup">
-            <Button style = {register}>
-              <p>Register</p>
-            </Button> 
-          </Link> */}
+        
         </Form.Item>
       </Form>
     );
