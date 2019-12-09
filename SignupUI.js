@@ -18,22 +18,7 @@ class RegistrationForm extends React.Component {
   };
 
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        //echo the values to the browser console to make sure they are correct
 
-        console.log('Received values of form: ', values);
-
-            return res.json()
-        }).then(data => this.checkResponse(data))
-
-      }
-
-    });
-
-  };
 
 
 
